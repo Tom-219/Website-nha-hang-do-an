@@ -4,12 +4,14 @@ package com.appfood.hung.service;
 import com.appfood.hung.model.Cart;
 import com.appfood.hung.model.CartItem;
 import com.appfood.hung.model.Product;
+import com.appfood.hung.model.User;
 import com.appfood.hung.repository.CartItemRepository;
 import com.appfood.hung.repository.CartRepository;
 import com.appfood.hung.repository.UserRepository;
 import com.appfood.hung.repository.facade.AuthenticationFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.Collection;
@@ -45,6 +47,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    @Transactional
     public void addToCard(long productId) {
         long uid = facade.getCurrentUserId();
         Product product = productService.findById(productId);
@@ -54,6 +57,8 @@ public class CartServiceImpl implements CartService {
         if (cart == null) {
             cart = new Cart(userRepository.findById(uid).orElse(null));
             Cart cartUpdate = repository.save(cart);
+            User currentUser = facade.getCurrentUser();
+            currentUser.setCart(cart);
             CartItem item = CartItem.builder()
                     .cart(cartUpdate)
                     .quantity(1)
