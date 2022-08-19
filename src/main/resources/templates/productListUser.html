@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace ="~{fragments/myheader1 :: text}"></div>
+<body>
+
+    <nav class="fh5co-nav" role="navigation">
+        <!-- <div class="top-menu"> -->
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center logo-wrap">
+                    <div id="fh5co-logo"></div>
+                </div>
+                <div class="col-xs-12 text-center menu-1 menu-wrap">
+                    <ul>
+                        <li class="active"><a th:href = "@{/index1}">Trang Chủ</a></li>
+                        <li><a th:href = "@{/menu}">Menu</a></li>
+                        <li class="has-dropdown">
+                            <a th:href = "@{/gallery}">Trưng Bày</a>
+                            <ul class="dropdown">
+                                <li><a href="#">Sự Kiện</a></li>
+                                <li><a href="#">Đồ Ăn</a></li>
+                                <li><a href="#">Đồ Uống</a></li>
+                            </ul>
+                        </li>
+                        <li><a th:href = "@{/reservation}">Đặt Bàn</a></li>
+                        <li><a th:href = "@{/about}">Về Chúng Tôi</a></li>
+                        <li><a th:href = "@{/contact}">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!-- </div> -->
+    </nav>
+
+    <div class="container text-center" style="margin-top: 100px;">
+        <div class="row">
+            <div class="col">col</div>
+            <div class="col">col</div>
+            <div class="col">col</div>
+            <div class="col">col</div>
+        </div>
+        <div class="row" style="margin-top: 30px;">
+            <div class="col-4">
+                <div class="col">
+                    Thể loại
+                </div>
+                <hr>
+
+                <div class="col">
+                    Đồ ăn
+                </div>
+
+                <div class="col">
+                    Đồ uống
+                </div>
+            </div>
+            <div class="col-8">
+                <tr th:each="product : ${products}">
+                <div class="card" style="float:left; dísplay: inline-block; width: 250px; margin: 10px;">
+                    <h5 class="card-title">[[*{product.name}]]</h5>
+                    <img th:src="*{'data:image/jpeg;base64,'+{product.image}}" class="card-img-top" style="height: 150px" alt="...">
+                    <div class="card-body">
+                        <p class="card-text" style="color: black;">[[*{product.description}]]</p>
+                        <p class="card-text" style="color: black;">[[*{product.price}]]</p>
+
+                        <a th:href = "@{/user/cart/add-to-cart/{id} (id=${product.id})}" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+                </tr>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace ="~{fragments/alljsatbtm :: alljsatbtm}"></div>
+</body>
+</html>
