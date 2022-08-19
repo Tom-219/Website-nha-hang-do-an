@@ -21,4 +21,8 @@ public class Cart {
 
     @OneToOne(mappedBy = "cart")
     private User user;
+
+    public Cart(User user) {
+        this.user = user;
+    }
 }

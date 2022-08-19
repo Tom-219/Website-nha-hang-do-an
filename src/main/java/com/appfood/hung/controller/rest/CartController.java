@@ -17,11 +17,9 @@ public class CartController {
 
     private final ProductService productService;
 
-    private final AuthenticationFacade facade;
-
     @GetMapping("/add-to-cart/{id}")
     public String add(@PathVariable("id") long id) {
-        long uid = facade.getCurrentUserId();
+//        long uid = facade.getCurrentUserId();
         Product product = productService.findById(id);
         if (product != null) {
             CartItem item = new CartItem();

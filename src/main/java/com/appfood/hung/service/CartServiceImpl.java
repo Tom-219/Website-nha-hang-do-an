@@ -1,8 +1,13 @@
 package com.appfood.hung.service;
 
 
+import com.appfood.hung.model.Cart;
 import com.appfood.hung.model.CartItem;
 import com.appfood.hung.model.Product;
+import com.appfood.hung.repository.CartRepository;
+import com.appfood.hung.repository.UserRepository;
+import com.appfood.hung.repository.facade.AuthenticationFacade;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -12,8 +17,15 @@ import java.util.Map;
 
 @Service
 @SessionScope
+@RequiredArgsConstructor
 public class CartServiceImpl implements CartService{
     private Map<Product, CartItem> map = new HashMap<>();
+
+    private final AuthenticationFacade facade;
+
+    private final CartRepository repository;
+
+    private final UserRepository userRepository;
 
     public void add(CartItem item){
         CartItem existedItem = map.get(item.getProduct());
@@ -23,6 +35,17 @@ public class CartServiceImpl implements CartService{
             map.put(item.getProduct(),item);
         }
         map.put(item.getProduct(),item);
+    }
+
+    @Override
+    public void addToCard(long productId) {
+        long uid = facade.getCurrentUserId();
+        // kiem tra cart voi uid nay da co chua, neu chua thi add cart & new cart - item voi qty = 1
+
+        Cart cart = repository.findByUserId(uid);
+        if (cart == null)
+            cart = new Cart(userRepository.findById(uid).orElse(null));
+
     }
 
     public void remove(Product product){

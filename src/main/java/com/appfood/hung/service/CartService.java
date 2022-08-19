@@ -8,6 +8,8 @@ import java.util.Collection;
 public interface CartService {
     void add(CartItem item);
 
+    void addToCard(long productId);
+
     void remove(Product product);
 
     Collection<CartItem> getCartItem();
