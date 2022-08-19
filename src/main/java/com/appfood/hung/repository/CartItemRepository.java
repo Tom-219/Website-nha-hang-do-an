@@ -10,4 +10,6 @@ import java.util.List;
 public interface CartItemRepository extends JpaRepository<CartItem, Long> {
 
     List<CartItem> findByCartId(long cartId);
+
+    long countByCartId(long cartId);
 }

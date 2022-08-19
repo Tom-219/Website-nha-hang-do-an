@@ -39,8 +39,8 @@ public class CartItemController {
          if(product !=null){
              CartItem item = new CartItem();
              /*BeanUtils.copyProperties(product, item);*/
-             item.setPrice((double) product.getPrice());
-             item.setName(product.getName());
+//             item.setPrice((double) product.getPrice());
+//             item.setName(product.getName());
              item.setQuantity(1);
              cartService.add(item);
          }

@@ -6,6 +6,7 @@ import com.appfood.hung.repository.facade.AuthenticationFacade;
 import com.appfood.hung.service.CartService;
 import com.appfood.hung.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,21 +16,9 @@ public class CartController {
 
     private final CartService cartService;
 
-    private final ProductService productService;
-
     @GetMapping("/add-to-cart/{id}")
-    public String add(@PathVariable("id") long id) {
-//        long uid = facade.getCurrentUserId();
-        Product product = productService.findById(id);
-        if (product != null) {
-            CartItem item = new CartItem();
-            /*BeanUtils.copyProperties(product, item);*/
-            item.setPrice((double) product.getPrice());
-            item.setName(product.getName());
-            item.setQuantity(1);
-            cartService.add(item);
-        }
-        /*return"admin/cartItem/list";*/
-        return "admin/cartItem/list";
+    public ResponseEntity<Void> addToCart(@PathVariable("id") long id) {
+        cartService.addToCard(id);
+        return ResponseEntity.ok().build();
     }
 }
