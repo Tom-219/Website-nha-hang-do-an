@@ -53,9 +53,9 @@ public class CartServiceImpl implements CartService {
         Cart cart = repository.findByUserId(uid);
         if (cart == null) {
             cart = new Cart(userRepository.findById(uid).orElse(null));
-            repository.save(cart);
+            Cart cartUpdate = repository.save(cart);
             CartItem item = CartItem.builder()
-                    .cart(cart)
+                    .cart(cartUpdate)
                     .quantity(1)
                     .product(product)
                     .build();

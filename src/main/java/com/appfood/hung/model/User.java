@@ -28,8 +28,7 @@ public class User {
 
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cart_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Cart cart;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
