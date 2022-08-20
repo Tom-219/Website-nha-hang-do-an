@@ -28,7 +28,7 @@ public class CategoryController {
 
         public String save(@ModelAttribute("category") CategoryDto categoryDto) {
             categoryService.save(categoryDto);
-            return "redirect:/admin/category/create";
+            return "redirect:/admin";
         }
 
 }

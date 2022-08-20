@@ -46,7 +46,7 @@ public class ProductController {
         model.addAttribute("categories", list);
         model.addAttribute("productDto",p);
         productService.saveProductToDB(p);
-        return "redirect:/admin/product/new";
+        return "redirect:/admin";
     }
 
     @GetMapping("deleteProd/{id}")
@@ -54,7 +54,7 @@ public class ProductController {
     {
 
         productService.deleteProductById(id);
-        return "redirect:/admin/product/listproducts";
+        return "redirect:/admin";
     }
 
     @PostMapping("changeName")
@@ -62,14 +62,15 @@ public class ProductController {
                               @RequestParam("newPname") String name)
     {
         productService.chageProductName(id, name);
-        return "redirect:/admin/product/listproducts";
+        return "redirect:/admin";
     }
     @PostMapping("changeDescription")
     public String changeDescription(@RequestParam("id") Long id ,
                                     @RequestParam("newDescription") String description)
     {
         productService.changeProductDescription(id, description);
-        return "redirect:/admin/product/listproducts";
+        return "redirect:/admin";
+        /*return "redirect:/admin/product/listproducts";*/
     }
 
     @PostMapping("changePrice")
@@ -77,7 +78,7 @@ public class ProductController {
                               @RequestParam("newPrice") int price)
     {
         productService.changeProductPrice(id, price);
-        return "redirect:/admin/product/listproducts";
+        return "redirect:/admin";
     }
 }
 

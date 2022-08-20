@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -23,6 +25,12 @@ public class Cart {
     @MapsId
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+
+    @OneToMany(mappedBy = "cart")
+    private Set<CartItem> cartItems;
+
+
 
     public Cart(User user) {
         this.user = user;
