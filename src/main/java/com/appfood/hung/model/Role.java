@@ -1,10 +1,18 @@
 package com.appfood.hung.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.loader.collection.OneToManyJoinWalker;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class Role {
 
     @Id
@@ -34,6 +42,9 @@ public class Role {
     public void setName(String name) {
         this.name = name;
     }
+
+    @ManyToMany(mappedBy = "roles")
+    private List<User> user = new ArrayList<>();
 
 
     @Override

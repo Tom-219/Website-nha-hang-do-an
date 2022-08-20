@@ -31,15 +31,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                             "/admin/**",
                             "/user/**",
                             "/index1/**",
+                            "/assets/**",
                             "/api/**",
                             "/cssAdmin/**",
                             "/font-awesomeAdmin/**",
                             "/imagesAdmin/**",
                             "/jsAdmin/**",
-                            "/js/**",
-                            "/css/**",
-                            "/img/**",
-                            "/images/**",
                             "/listproducts/**",
                             "/webjars/**")
                             .permitAll()

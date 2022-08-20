@@ -18,7 +18,7 @@ public class MainController {
 
     @GetMapping("/")
     public String root() {
-        return "index1";
+        return "home";
     }
 
     @GetMapping("/login")
@@ -26,10 +26,10 @@ public class MainController {
         return "login";
     }
 
-    @GetMapping("/user")
+    /*@GetMapping("/user")
     public String userIndex() {
         return "user/index";
-    }
+    }*/
     @GetMapping("/index1")
     public String home(){return "index1";}
 

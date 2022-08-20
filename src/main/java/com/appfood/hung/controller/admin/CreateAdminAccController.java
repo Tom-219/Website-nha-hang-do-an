@@ -36,6 +36,10 @@ public class CreateAdminAccController {
 
     @GetMapping("acc")
     public String showRegistrationForm(Model model) {
+        UserDto userDto = new UserDto();
+        model.addAttribute("roles", roleService.findAll());
+        model.addAttribute("user", userDto);
+
         return "admin/registration";
     }
 
