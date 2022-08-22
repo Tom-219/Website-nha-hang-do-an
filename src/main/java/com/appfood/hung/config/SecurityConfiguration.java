@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,26 +26,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers(
-                            "/registration**",
-                            "/",
-                            "/admin/**",
-                            "/user/**",
-                            "/index1/**",
-                            "/assets/**",
-                            "/api/**",
-                            "/cssAdmin/**",
-                            "/font-awesomeAdmin/**",
-                            "/imagesAdmin/**",
-                            "/jsAdmin/**",
-                            "/listproducts/**",
-                            "/webjars/**")
-                            .permitAll()
+/*
+                .antMatchers("/").hasRole("USER")
+*/
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/user/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
                         .loginPage("/login")
-                                .defaultSuccessUrl("/listproducts")
+                                .defaultSuccessUrl("/")
                             .permitAll()
                 .and()
                     .logout()
@@ -53,7 +44,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/login?logout")
                 .permitAll();
+
+                /*.and()
+                .authorizeRequests()
+                .antMatchers("/user/**").access("hasRole('ROLE_USER')")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/")
+                .permitAll()
+                .and()
+                .logout()
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout")
+                .permitAll();*/
     }
+
+
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
@@ -71,6 +81,28 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
+    }
+
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/resources/**","/assets/**","/registration**",
+                "/",
+/*
+                "/admin/**",
+*/
+/*
+                "/user/**",
+*/
+                "/error",
+                "/index1/**",
+                "/api/**",
+                "/cssAdmin/**",
+                "/font-awesomeAdmin/**",
+                "/imagesAdmin/**",
+                "/jsAdmin/**",
+                "/listproducts/**",
+                "/webjars/**");
     }
 
 }

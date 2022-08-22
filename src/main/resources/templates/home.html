@@ -92,10 +92,18 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
+          <li><a class="nav-link scrollto" th:href="@{/admin}">AdminPage</a></li>
+
+          <li class="nav-item"><a class="nav-link fl mr-4 btn btn-light" href="#">
+            <i class="fa fa-shopping-cart" title="View Cart"
+               style="color: red;"></i><span class="label">10</span>
+          </a></li>
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
       <a href="#book-a-table" class="book-a-table-btn scrollto d-none d-lg-flex">Đặt bàn</a>
+      <a href="/login" class="book-a-table-btn scrollto d-none d-lg-flex">Đăng nhập/Đăng ký</a>
 
     </div>
   </header><!-- End Header -->
@@ -109,7 +117,7 @@
           <h2>Mang đến những món ăn tuyệt vời trong hơn 5 năm!</h2>
 
           <div class="btns">
-            <a href="#menu" class="btn-menu animated fadeInUp scrollto">Đặt món</a>
+            <a th:href="@{/user/listproducts}" class="btn-menu animated fadeInUp scrollto">Đặt món</a>
             <a href="#book-a-table" class="btn-book animated fadeInUp scrollto">Đặt bàn</a>
           </div>
         </div>
@@ -198,16 +206,16 @@
 
         <div class="section-title">
           <h2>Menu</h2>
-          <p>Check Our Tasty Menu</p>
+          <p>Menu của chúng tôi</p>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="menu-flters">
               <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-starters">Starters</li>
-              <li data-filter=".filter-salads">Salads</li>
-              <li data-filter=".filter-specialty">Specialty</li>
+              <li data-filter=".filter-starters">Khai vị</li>
+              <li data-filter=".filter-salads">Món chính</li>
+              <li data-filter=".filter-specialty">Đặc biệt</li>
             </ul>
           </div>
         </div>
@@ -217,90 +225,90 @@
           <div class="col-lg-6 menu-item filter-starters">
             <img src="assets/img/menu/lobster-bisque.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Lobster Bisque</a><span>$5.95</span>
+              <a href="#">Tôm Hùm</a><span>499.000VND</span>
             </div>
             <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
+              Tôm tươi từ biển, chế biến bởi đầu bếp tài năng
             </div>
           </div>
 
           <div class="col-lg-6 menu-item filter-specialty">
             <img src="assets/img/menu/bread-barrel.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Bread Barrel</a><span>$6.95</span>
+              <a href="#">Bành mỳ </a><span>120.000VND</span>
             </div>
             <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
+              Bành mỳ tươi, thơm ngon đến miếng cuối cùng
             </div>
           </div>
 
           <div class="col-lg-6 menu-item filter-starters">
             <img src="assets/img/menu/cake.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Crab Cake</a><span>$7.95</span>
+              <a href="#">Bánh cua</a><span>225.000VND</span>
             </div>
             <div class="menu-ingredients">
-              A delicate crab cake served on a toasted roll with lettuce and tartar sauce
+              Bánh cua được làm bởi đầu bếp giỏi nhất
             </div>
           </div>
 
           <div class="col-lg-6 menu-item filter-salads">
             <img src="assets/img/menu/caesar.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Caesar Selections</a><span>$8.95</span>
+              <a href="#">Bánh Phô Mai</a><span>149.000VND</span>
             </div>
             <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
+              Thơm ngon đến miếng cuối cùng
             </div>
           </div>
 
           <div class="col-lg-6 menu-item filter-specialty">
             <img src="assets/img/menu/tuscan-grilled.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Tuscan Grilled</a><span>$9.95</span>
+              <a href="#">Tuscan Nướng</a><span>350.000VND</span>
             </div>
             <div class="menu-ingredients">
-              Grilled chicken with provolone, artichoke hearts, and roasted red pesto
+              Thơm ngon trên từng miếng
             </div>
           </div>
 
           <div class="col-lg-6 menu-item filter-starters">
             <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Mozzarella Stick</a><span>$4.95</span>
+              <a href="#">Bánh Kem Tươi</a><span>99.000VND</span>
             </div>
             <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
+              Lớp vỏ mềm mại, siêu ngon
             </div>
           </div>
 
           <div class="col-lg-6 menu-item filter-salads">
             <img src="assets/img/menu/greek-salad.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Greek Salad</a><span>$9.95</span>
+              <a href="#"> Salad Hy Lạp</a><span>219.000VND</span>
             </div>
             <div class="menu-ingredients">
-              Fresh spinach, crisp romaine, tomatoes, and Greek olives
+              Món salad làm từ nhưng nguyên liệu tươi ngon nhất
             </div>
           </div>
 
           <div class="col-lg-6 menu-item filter-salads">
             <img src="assets/img/menu/spinach-salad.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Spinach Salad</a><span>$9.95</span>
+              <a href="#"> Salad Rau chân vịt</a><span>219.000VND</span>
             </div>
             <div class="menu-ingredients">
-              Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
+              Món salad làm từ nhưng nguyên liệu tươi ngon nhất
             </div>
           </div>
 
           <div class="col-lg-6 menu-item filter-specialty">
             <img src="assets/img/menu/lobster-roll.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Lobster Roll</a><span>$12.95</span>
+              <a href="#">Tôm hùm cuộn</a><span>339.000VND</span>
             </div>
             <div class="menu-ingredients">
-              Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
+              Tôm hùm cuộn tươi ngon từ biển cả
             </div>
           </div>
 

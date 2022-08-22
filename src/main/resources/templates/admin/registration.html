@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
 
-<title>Registration</title>
+<title>ĐĂNG KÝ</title>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -21,8 +21,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#" th:href="@{/}">Registration and
-					Login Module</a>
+				<a class="navbar-brand" href="#" th:href="@{/}">TẠO TÀI KHOẢN ADMIN VÀ ĐĂNG NHẬP</a>
 			</div>
 		</div>
 	</nav>
@@ -35,11 +34,10 @@
 			<div class="col-md-6 col-md-offset-3">
 
 				<div th:if="${param.success}">
-					<div class="alert alert-info">You've successfully registered
-						to our awesome app!</div>
+					<div class="alert alert-info">Taọ tài khoản thành công!</div>
 				</div>
 
-				<h1>Registration</h1>
+				<h1>Tạo tài khoản</h1>
 				<form th:action="@{/admin/registration/acc}" th:object="${user}" method="post">
 
 					<p class="error-message" th:if="${#fields.hasGlobalErrors()}"
@@ -48,7 +46,7 @@
 
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
-						<label for="firstName" class="control-label">First name</label> <input
+						<label for="firstName" class="control-label">Tên</label> <input
 							id="firstName" class="form-control" th:field="*{firstName}" />
 						<p class="error-message"
 							th:each="error: ${#fields.errors('firstName')}"
@@ -57,7 +55,7 @@
 
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
-						<label for="lastName" class="control-label">Last name</label> <input
+						<label for="lastName" class="control-label">Tên Đệm</label> <input
 							id="lastName" class="form-control" th:field="*{lastName}" />
 						<p class="error-message"
 							th:each="error : ${#fields.errors('lastName')}"
@@ -74,7 +72,7 @@
 					</div>
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('confirmEmail')}? 'has-error':''">
-						<label for="confirmEmail" class="control-label">Confirm
+						<label for="confirmEmail" class="control-label">Nhập lại
 							e-mail</label> <input id="confirmEmail" class="form-control"
 							th:field="*{confirmEmail}" />
 						<p class="error-message"
@@ -83,7 +81,7 @@
 					</div>
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
-						<label for="password" class="control-label">Password</label> <input
+						<label for="password" class="control-label">Mật khẩu</label> <input
 							id="password" class="form-control" type="password"
 							th:field="*{password}" />
 						<p class="error-message"
@@ -93,7 +91,7 @@
 
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
-						<label for="confirmPassword" class="control-label">Confirm
+						<label for="confirmPassword" class="control-label">Nhập lại mật khẩu
 							password</label> <input id="confirmPassword" class="form-control"
 							type="password" th:field="*{confirmPassword}" />
 						<p class="error-message"
@@ -102,7 +100,7 @@
 					</div>
 
 					<tr>
-						<td>Select Role:</td>
+						<td>Chọn Role:</td>
 						<td>
 							<select th:field="*{role}" name = "role">
 								<option value=""> </option>
@@ -115,17 +113,16 @@
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('terms')}? 'has-error':''">
 						<input id="terms" type="checkbox" th:field="*{terms}" />   <label
-							class="control-label" for="terms"> I agree with the <a
-							href="#">terms and conditions</a> for Registration.
+							class="control-label" for="terms"> Tôi đồng ý với  <a
+							href="#">quy tắc và điều lệ</a> để đăng ký
 						</label>
 						<p class="error-message"
 							th:each="error : ${#fields.errors('terms')}" th:text="${error}">Validation
 							error</p>
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-success">Register</button>
-						<span>Already registered? <a href="/" th:href="@{/login}">Login
-								here</a></span>
+						<button type="submit" class="btn btn-success">Tạo tài khoản</button>
+						<span>Đã có tài khoản? <a href="/" th:href="@{/login}">Đăng nhập ở đây</a></span>
 					</div>
 
 				</form>

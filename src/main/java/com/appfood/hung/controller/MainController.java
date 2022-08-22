@@ -60,7 +60,7 @@ public class MainController {
         return "reservation";
     }
 
-    @GetMapping("/listproducts")
+    @GetMapping("listproducts")
     public String ListProducts(Model model){
         List<Product> products = productService.getAllProduct();
         model.addAttribute("products", products);

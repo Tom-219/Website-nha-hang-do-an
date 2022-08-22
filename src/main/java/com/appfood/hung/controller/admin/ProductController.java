@@ -57,6 +57,7 @@ public class ProductController {
         return "redirect:/admin";
     }
 
+
     @PostMapping("changeName")
     public String changePname(@RequestParam("id") Long id,
                               @RequestParam("newPname") String name)

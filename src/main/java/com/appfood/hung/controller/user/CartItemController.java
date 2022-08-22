@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Collection;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user/")
@@ -24,14 +25,12 @@ public class CartItemController {
 
     @Autowired
     CartService cartService;
-    @GetMapping("list")
-        public String list(Model model){
-        Collection<CartItem> cartItems = cartService.getCartItem();
-
-        model.addAttribute("cartItems", cartItems);
-        model.addAttribute("total", cartService.getAmount());
-        model.addAttribute("NoOfItems", cartService.getCount());
-        return "admin/cartItem/list";}
+    @GetMapping("listproducts")
+    public String ListProducts(Model model){
+        List<Product> products = productService.getAllProduct();
+        model.addAttribute("products", products);
+        return "productListUser";
+    }
 
     @GetMapping ("addToCart/{id}")
     public String add(@PathVariable("id")Long id){
